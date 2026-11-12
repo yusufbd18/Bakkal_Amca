@@ -1,51 +1,500 @@
+@view-transition {
+  navigation: auto;
+}
+
+/* ==========================================
+   BAKKAL AMCA - AÇIK RENK & SABİT MENÜ TEMASI
+   ========================================== */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.ana-kutu {
-    display: flex;
+body {
+    background-color: #f8fafc; /* Ferah Açık Arka Plan */
+    color: #1e293b;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     min-height: 100vh;
 }
 
+/* Ana Kapsayıcı Düzlemi */
+.ana-kutu {
+    display: flex;
+    min-height: 100vh;
+    align-items: flex-start;
+}
+
+/* ==========================================
+   SABİT SOL PANEL (SIDEBAR)
+   ========================================== */
 aside {
     width: 280px;
-    border-right: 2px solid #ccc;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    left: 0;
+    border-right: 1px solid #e2e8f0;
     padding: 20px;
+    background-color: #ffffff;
+    overflow-y: auto;
+    flex-shrink: 0; /* Sayfa küçülürken sidebar'ın büzülmesini engeller */
+    z-index: 10;
 }
 
+/* Sağ Ana İçerik Alanı */
 main {
     flex: 1;
-    padding: 20px;
+    padding: 24px;
+    min-width: 0; /* Taşmaları önler */
 }
 
+/* Bakkal Amca İtalik Alt Çizgili Logo */
+h1.site-logosu {
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 29px !important;
+    font-weight: 900 !important;
+    font-style: italic !important;
+    text-transform: uppercase !important;
+    text-align: center !important;
+    margin-bottom: 20px !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.5px !important;
+    padding-bottom: 10px !important;
+    border-bottom: 3px solid #10b981 !important;
+    background: linear-gradient(135deg, #10b981 0%, #0284c7 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    color: transparent !important;
+    filter: drop-shadow(0 3px 6px rgba(16, 185, 129, 0.2)) !important;
+    display: block !important;
+}
 
+/* Sol Menü */
+.ana-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+    display: flex;
+    gap: 10px;
+}
+
+.ana-menu li {
+    flex: 1;
+}
+
+.ana-menu a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 6px;
+    background-color: #f1f5f9;
+    color: #475569;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.ana-menu a i {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.ana-menu a span {
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.ana-menu a:hover {
+    background-color: #0284c7;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Sol Menü Form Elemanları (Marka Filtresi & Arama) */
+aside label {
+    display: block;
+    font-size: 13px;
+    color: #475569;
+    font-weight: 600;
+    margin-top: 12px;
+    margin-bottom: 4px;
+}
+
+aside select,
+aside input[type="text"] {
+    width: 100%;
+    padding: 9px 12px;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    color: #0f172a;
+    font-size: 13px;
+    outline: none;
+    margin-bottom: 8px;
+}
+
+aside select:focus,
+aside input[type="text"]:focus {
+    border-color: #0284c7;
+}
+
+/* ==========================================
+   ÜRÜN KARTLARI VE VİTRİN (index.html)
+   ========================================== */
 .vitrin {
     display: flex;
-    flex-wrap: wrap; /* Sığmayan kartlar alt satıra geçsin */
-    gap: 20px;       /* Kartların arasında 20px boşluk olsun */
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .urun-karti {
-    border: 1px solid #ddd;    /* Etrafına hafif gri bir çerçeve */
-    border-radius: 8px;        /* Köşeleri tatlıca yuvarlat */
-    padding: 15px;             /* İçindekiler kenarlara yapışmasın */
-    width: 200px;            
-    background-color: #fff;    
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
-    text-align: center;        /* İçindeki yazıları ortala */
+    position: relative !important;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px;
+    width: 200px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.urun-karti:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    border-color: #0284c7;
 }
 
 .urun-karti img {
-    max-width: 100%;
+    width: 100%;
     height: 120px;
-    object-fit: contain;       /* Resmi bozmadan kutuya sığdır */
+    object-fit: cover;
+    border-radius: 8px;
     margin-bottom: 10px;
 }
 
+.urun-karti h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 4px;
+}
+
+.urun-karti .marka {
+    font-size: 13px;
+    color: #64748b;
+    margin-bottom: 6px;
+}
+
 .urun-karti .fiyat {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0284c7;
+    margin-bottom: 4px;
+}
+
+.urun-karti .barkod {
+    font-size: 11px;
+    color: #94a3b8;
+}
+
+/* Vitrindeki "+ Yeni Ürün Ekle" Kartı */
+.kart-ekle {
+    border: 2px dashed #0284c7;
+    background-color: #f0f9ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 220px;
+}
+
+.kart-ekle a {
+    text-decoration: none;
+    color: #0284c7;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.kart-ekle .arti-simgesi {
+    font-size: 42px;
     font-weight: bold;
-    color: #2e7d32;
-    margin: 5px 0;
+    margin-bottom: 8px;
+}
+
+.kart-ekle:hover {
+    background-color: #e0f2fe;
+    border-color: #0369a1;
+}
+
+/* Aksiyon Buton Grubu (Sil & Düzenle) */
+.kart-aksiyonlari {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 6px;
+    z-index: 2;
+}
+
+.btn-aksiyon {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+.btn-duzenle {
+    background-color: #0284c7;
+    color: #ffffff;
+}
+
+.btn-duzenle:hover {
+    background-color: #0369a1;
+}
+
+.btn-sil {
+    background-color: #ef4444;
+    color: #ffffff;
+}
+
+.btn-sil:hover {
+    background-color: #dc2626;
+}
+
+/* ==========================================
+   ÜRÜN TABLOSU STİLLERİ (urunler.html)
+   ========================================== */
+.ust-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.btn-marka {
+    background-color: #0284c7;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.urun-tablosu {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.urun-tablosu th, 
+.urun-tablosu td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+    vertical-align: middle;
+}
+
+.urun-tablosu th {
+    background-color: #f1f5f9;
+    color: #475569;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* Tabloda Butonların Alt Alta Düşmesini Engelleme */
+.urun-tablosu td.islem-hucre,
+.marka-urun-tablosu td.islem-hucre,
+.urun-tablosu td:last-child,
+.marka-urun-tablosu td:last-child {
+    white-space: nowrap !important;
+}
+
+.urun-tablosu td .btn-aksiyon,
+.marka-urun-tablosu td .btn-aksiyon {
+    margin-right: 6px;
+}
+
+/* ==========================================
+   FORM VE DÜĞME STİLLERİ (urun-ekle.html)
+   ========================================== */
+.urun-formu {
+    max-width: 500px;
+    background-color: #ffffff;
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-top: 20px;
+}
+
+.form-grubu {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+    gap: 6px;
+}
+
+.form-grubu label {
+    font-size: 14px;
+    color: #334155;
+    font-weight: 600;
+}
+
+.form-grubu input[type="text"],
+.form-grubu input[type="number"],
+.form-grubu select {
+    width: 100%;
+    padding: 10px 12px;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    color: #0f172a;
+    font-size: 14px;
+    outline: none;
+}
+
+.form-grubu input:focus,
+.form-grubu select:focus {
+    border-color: #0284c7;
+}
+
+.btn-kaydet {
+    width: 100%;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #10b981 0%, #0284c7 100%);
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+    margin-top: 10px;
+}
+
+.btn-kaydet:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(16, 185, 129, 0.35);
+    filter: brightness(1.1);
+}
+
+/* ==========================================
+   MARKA KATALOĞU (Açık Renk Akordeon)
+   ========================================== */
+.markalar-konteyner {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.marka-kart {
+    background-color: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.marka-kart:hover {
+    border-color: #0284c7;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.12);
+}
+
+.marka-baslik {
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    color: #0f172a;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 16px;
+    user-select: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.marka-baslik:hover {
+    background-color: #f8fafc;
+    color: #0284c7;
+}
+
+.ok-simgesi {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 12px;
+    color: #0284c7;
+}
+
+.marka-kart.aktif .ok-simgesi {
+    transform: rotate(180deg);
+}
+
+/* Akıcı Grid Açılışı */
+.marka-icerik {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease;
+    padding: 0 20px;
+    background-color: #f8fafc;
+}
+
+.marka-kart.aktif .marka-icerik {
+    grid-template-rows: 1fr;
+    padding: 16px 20px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.marka-icerik-ic {
+    overflow: hidden;
+}
+
+.marka-urun-tablosu {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.marka-urun-tablosu th,
+.marka-urun-tablosu td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 14px;
+    color: #1e293b;
+}
+
+.marka-urun-tablosu th {
+    color: #475569;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.marka-urun-tablosu tr:last-child td {
+    border-bottom: none;
 }

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yeni Ürün Ekle - Bakkal Amca</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="ana-kutu">
+        <aside>
+            <h1 class="site-logosu">Bakkal Amca</h1>
+
+            <nav class="ana-menu">
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            <i class="fa-solid fa-house"></i>
+                            <span>Ana Sayfa</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="urunler.html">
+                            <i class="fa-solid fa-boxes-stacked"></i>
+                            <span>Ürünler</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="hakkinda.html">
+                            <i class="fa-solid fa-user"></i>
+                            <span>Hakkımızda</span>
+                        </a>
+                    </li>
+                </ul>    
+            </nav>
+
+            <hr class="menu-cizgisi" style="margin: 15px 0; border-color: #e2e8f0;">
+            
+        </aside>
+
+        <main>
+            <h2>Yeni Ürün Ekle</h2>
+            
+            <form class="urun-formu">
+                <div class="form-grubu">
+                    <label for="barkod">Barkod No:</label>
+                    <input type="text" id="barkod" placeholder="Barkod okutun veya girin" required>
+                </div>
+
+                <div class="form-grubu">
+                    <label for="urun-adi">Ürün Adı:</label>
+                    <input type="text" id="urun-adi" placeholder="Örn: Çikolatalı Gofret" required>
+                </div>
+
+                <div class="form-grubu">
+                    <label for="marka">Marka:</label>
+                    <input type="text" id="marka" list="marka-listesi" placeholder="Marka seçin veya yazın" required>
+
+                    <datalist id="marka-listesi">
+                        <option value="Eti"></option>
+                        <option value="Ülker"></option>
+                        <option value="Sütaş"></option>
+                        <option value="Yudum"></option>
+                    </datalist>
+                </div>
+
+                <div class="form-grubu">
+                    <label for="fiyat">Satış Fiyatı (TL):</label>
+                    <input type="number" id="fiyat" step="0.01" placeholder="0.00" required>
+                </div>
+
+                <div class="form-grubu">
+                    <label for="gorsel">Ürün Görseli:</label>
+                    <input type="file" id="gorsel" accept="image/*">
+                </div>
+
+                <div class="form-grubu">
+                    <button type="submit" class="btn-kaydet">Ürünü Kaydet</button>
+                </div>
+            </form>
+        </main>
+    </div>
+</body>
+</html>

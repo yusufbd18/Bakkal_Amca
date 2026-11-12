@@ -1,45 +1,58 @@
-<html>
-   
-    <head>
-        <title>Bakkal Amca</title>
-
-        <link rel="stylesheet" href="style.css">
-    </head>
-    
-    <body>
-        <div class="ana-kutu">
-       
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bakkal Amca - Ana Sayfa</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="ana-kutu">
         <aside>
-            <h1>Bakkal Amca</h1>
-           
-            <img src="resimler/cambados.jpg" alt="Bakkal Amca" width="180"> <br>
+            <h1 class="site-logosu">Bakkal Amca</h1>
+
+            <nav class="ana-menu">
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            <i class="fa-solid fa-house"></i>
+                            <span>Ana Sayfa</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="urunler.html">
+                            <i class="fa-solid fa-boxes-stacked"></i>
+                            <span>Ürünler</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="hakkinda.html">
+                            <i class="fa-solid fa-user"></i>
+                            <span>Hakkımızda</span>
+                        </a>
+                    </li>
+                </ul>    
+            </nav>
+            
+            <hr class="menu-cizgisi" style="margin: 15px 0; border-color: #e2e8f0;">
            
             <label for="marka-filtrele">Marka Seç:</label>
             <select id="marka-filtrele">
-                <option>Tüm Markalar</option>
-                <option value="eti">Eti</option>
-                <option value="ulker">Ülker</option>
-                <option value="sutas">Sütaş</option>
-            </select> <br>
+                <!-- JS Otomatik Dolduracak -->
+            </select>
 
             <label for="urun-arama">Ürün ara:</label>
             <input type="text" id="urun-arama" placeholder="Ürün adı veya barkod girin">
-            
         </aside>
 
-
         <main>
+            <h2>Ürün Vitrini</h2>
             <div class="vitrin">
-                <div class="urun-karti">
-                    <img src="resimler/ulkercikolataligofret.jpg" alt="Çikolatalı Gofret">
-                    <h3>Çikolatalı Gofret</h3>
-                    <p class="marka">Ülker</p>
-                    <p class="fiyat">20.00 TL</p>
-                    <small class="barkod">Barkod: 1234567</small>
-                </div>
+                <!-- JS Dinamik Dolduracak -->
             </div>
         </main>
-        
-        </div>
-    </body>
+    </div>
+</body>
 </html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ürünler - Bakkal Amca</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="ana-kutu">
+        <aside>
+            <h1 class="site-logosu">Bakkal Amca</h1>
+
+            <nav class="ana-menu">
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            <i class="fa-solid fa-house"></i>
+                            <span>Ana Sayfa</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="urunler.html">
+                            <i class="fa-solid fa-boxes-stacked"></i>
+                            <span>Ürünler</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="hakkinda.html">
+                            <i class="fa-solid fa-user"></i>
+                            <span>Hakkımızda</span>
+                        </a>
+                    </li>
+                </ul>    
+            </nav>
+            
+            <hr class="menu-cizgisi" style="margin: 15px 0; border-color: #e2e8f0;">
+
+            <label for="marka-filtrele">Marka Seç:</label>
+            <select id="marka-filtrele">
+                <!-- JS Otomatik Dolduracak -->
+            </select>
+
+            <label for="urun-arama">Ürün ara:</label>
+            <input type="text" id="urun-arama" placeholder="Ürün adı veya barkod girin">
+        </aside>
+
+       <main>
+            <div class="ust-bar">
+                <h2>Ürünler</h2>
+                <div class="buton-grubu" style="display: flex; gap: 10px; align-items: center;">
+                    <a href="urun-ekle.html" class="btn-marka" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">+ Yeni Ürün Ekle</a>
+                    <a href="markalar.html" class="btn-marka">Markalar &rarr;</a>
+                </div>
+            </div>
+
+            <table class="urun-tablosu">
+                <thead>
+                    <tr>
+                        <th>Görsel</th>
+                        <th>Barkod No</th>
+                        <th>Ürün Adı</th>
+                        <th>Marka</th>
+                        <th>Fiyat</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- JavaScript burayı dinamik dolduracak -->
+                </tbody>
+            </table>
+        </main>
+    </div>
+</body>
+</html>
